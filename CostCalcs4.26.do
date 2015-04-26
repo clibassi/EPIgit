@@ -81,7 +81,7 @@ replace loan1 = COAexcel-grant1-ws1-maxefc if maxefc>=601 & !missing(maxefc)
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval1 = grant1+ws1+loan1+maxefc 
+gen tuitval1 = grant1+ws1+loan1 
 
 *Check to see this is equal to COA 
 list COAexcel tuitval1 grant1 ws1 loan1 maxefc if COAexcel!=tuitval1
@@ -134,7 +134,7 @@ egen totcost1211 = total(costdif12) if freered11==1
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval2 = grant2+ws2+loan2+maxefc 
+gen tuitval2 = grant2+ws2+loan2 
 
 *Check to see this is equal to COA 
 list COAexcel tuitval2 grant2 ws2 loan2 maxefc if COAexcel!=tuitval2
@@ -216,7 +216,7 @@ replace loan3 = COAexcel-grant1-ws1-maxefc if maxefc>=601 & !missing(maxefc)
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval3 = grant3+ws3+loan3+maxefc 
+gen tuitval3 = grant3+ws3+loan3 
 
 *Check to see this is equal to COA 
 list COAexcel tuitval3 grant3 ws3 loan3 maxefc if COAexcel!=tuitval3
@@ -279,7 +279,7 @@ egen totcost3411 = total(costdif34) if freered11==1
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval4 = grant4+ws4+loan4+maxefc+studentcost4
+gen tuitval4 = grant4+ws4+loan4+studentcost4
 
 *Check to see this is equal to COA 
 list COAexcel tuitval4 grant4 ws4 loan4 maxefc studentcost4 if COAexcel!=tuitval4
@@ -351,7 +351,7 @@ replace loan5 = COA-grant5-ws5-maxefc if maxefc>=601 & !missing(maxefc)
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval5 = grant5+ws5+loan5+maxefc 
+gen tuitval5 = grant5+ws5+loan5 
 
 *Check to see this is equal to COA 
 list COA tuitval5 grant5 ws5 loan5 maxefc if COA!=tuitval5
@@ -407,7 +407,7 @@ egen totcost5611 = total(costdif56) if freered11==1
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval6 = grant6+ws6+loan6+maxefc 
+gen tuitval6 = grant6+ws6+loan6 
 
 *Check to see this is equal to COA 
 list COA tuitval6 grant6 ws6 loan6 maxefc if COA!=tuitval6
@@ -486,7 +486,7 @@ replace loan7 = COAexcel-grant7-ws7-maxefc if maxefc>=601 & !missing(maxefc)
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval7 = grant7+ws7+loan7+maxefc 
+gen tuitval7 = grant7+ws7+loan7 
 
 *Check to see this is equal to COA 
 list COAexcel tuitval7 grant7 ws7 loan7 maxefc if COAexcel!=tuitval7
@@ -543,13 +543,13 @@ egen totcost7810 = total(costdif78) if freered10==1 & freered11==1
 egen totcost7811 = total(costdif78) if freered11==1
 
 
-******** Quality Check 4**************
+******** Quality Check 8**************
 
 /*Create a variable that gives value of 
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval8 = grant8+ws8+loan8+maxefc+studentcost8
+gen tuitval8 = grant8+ws8+loan8+studentcost8
 
 *Check to see this is equal to COA 
 list COAexcel tuitval8 grant8 ws8 loan8 maxefc studentcost8 if COAexcel!=tuitval8
