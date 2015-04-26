@@ -8,7 +8,7 @@ use um_merged_srsd_2013, clear
 
 *Create some important variables
 gen COAexcel = 26984
-label variable COA2 "Cost of Attendance" 
+label variable COAexcel "Cost of Attendance" 
 
 gen GAM = 21900
 label variable GAM "Gift Aid Max" 
@@ -560,5 +560,7 @@ list COAexcel tuitval8 grant8 ws8 loan8 maxefc studentcost8 if COAexcel!=tuitval
 *Summarize Costs 
 
 sum totcost* 
+
+
 
 
