@@ -567,6 +567,7 @@ sum totcost*
 
 ********************************************************************************
 **FEBP Cleaning 
+cd /afs/umich.edu/group/m/mmcmps/projects/increasing_college_opportunities/um_data/Git/EPIgit
 import delimited higher_ed-data-17.csv, clear
 
 forvalues i = 2007(1)2013{
