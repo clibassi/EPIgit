@@ -107,7 +107,7 @@ label variable grant2 "New grant Flat COA of 26984"
 Aid and FAFSA EFC */
 *********** THIS IS ONE PLACE WE SEE AN ERROR *********************
 ***** Because total tuition value can be less than COA ************
-gen ws2 = COAexcel-newgrantexcel-FedProratedEFC
+gen ws2 = COAexcel-grant2-FedProratedEFC
 label variable ws2 "Amount of Federal Work Study - New Program" 
 replace ws2 = 0 if ws2<0
 
@@ -377,9 +377,10 @@ label variable grant6 "New grant using MCER COA"
 Aid and FAFSA EFC */
 *********** THIS IS ONE PLACE WE SEE AN ERROR *********************
 ***** Because total tuition value can be less than COA ************
-gen ws6 = COA-newgrantexcel-FedProratedEFC
+gen ws6 = COA-grant6-FedProratedEFC
 label variable ws6 "Amount of Federal Work Study - New Program" 
 replace ws6 = 0 if ws6<0
+
 
 **************
 *   Loan 6   *
