@@ -114,7 +114,7 @@ replace ws2 = 0 if ws2<0
 **************
 *   Loan 2   *
 **************
-loan2 = 0 
+gen loan2 = 0 
 
 **************
 * Cost Calcs *
@@ -258,7 +258,7 @@ replace grant4 = COAexcel-studentcost4-ws4 if FedProratedEFC>2500 & !missing(Fed
 **************
 *   Loan 4   *
 **************
-loan4 = 0 
+gen loan4 = 0 
 
 **************
 * Cost Calcs *
@@ -385,7 +385,7 @@ replace ws6 = 0 if ws6<0
 **************
 *   Loan 6   *
 **************
-loan6 = 0 
+gen loan6 = 0 
 
 
 **************
@@ -528,7 +528,7 @@ replace grant8 = COAexcel-studentcost4-ws4 if FedProratedEFC>2500 & !missing(Fed
 **************
 *   Loan 4   *
 **************
-loan8 = 0 
+gen loan8 = 0 
 
 **************
 * Cost Calcs *
