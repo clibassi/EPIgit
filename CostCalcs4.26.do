@@ -4,6 +4,8 @@
 cd /afs/umich.edu/group/m/mmcmps/projects/increasing_college_opportunities/um_data/
 use um_merged_srsd_2013, clear
 
+set more off 
+
 *log using costcalclog4.26.log, replace
 
 *Create some important variables
@@ -556,11 +558,37 @@ list COAexcel tuitval8 grant8 ws8 loan8 maxefc studentcost8 if COAexcel!=tuitval
 
 
 
-
 ********************************************************************************
 *Summarize Costs 
 
 sum totcost* 
+
+
+
+********************************************************************************
+**FEBP Cleaning 
+import delimited higher_ed-data-17.csv, clear
+
+forvalues i = 2007(1)2013{
+
+label variable workdisburse_`i' "Federal Work-Study Grant Disbursements" 
+label variable workrecip_`i' "Federal Work-Study Grant Recipients" 
+
+replace workdisburse_`i'="." if workdisburse_`i'=="N/A" 
+replace workrecip_`i'="." if workrecip_`i'=="N/A" 
+
+destring workdisburse_`i', replace
+destring workrecip_`i', replace 
+
+
+}
+
+
+*
+
+sum work* if school=="University Of Michigan - Ann Arbor"
+
+
 
 
 
