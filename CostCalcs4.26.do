@@ -566,7 +566,7 @@ sum totcost*
 
 
 ********************************************************************************
-**FEBP Cleaning 
+/*FEBP Cleaning 
 cd /afs/umich.edu/group/m/mmcmps/projects/increasing_college_opportunities/um_data/Git/EPIgit
 import delimited higher_ed-data-17.csv, clear
 
@@ -590,7 +590,7 @@ destring workrecip_`i', replace
 sum work* if school=="University Of Michigan - Ann Arbor"
 
 
-
+*/
 
 
 
