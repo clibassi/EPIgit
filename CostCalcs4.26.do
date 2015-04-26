@@ -86,7 +86,7 @@ Contibution */
 gen tuitval1 = grant1+ws1+loan1 
 
 *Check to see this is equal to COA 
-list COAexcel tuitval1 grant1 ws1 loan1 maxefc if COAexcel!=tuitval1
+list COAexcel tuitval1 grant1 ws1 loan1 maxefc if COAexcel!=tuitval1 & !missing(tuitval1)
 
 
 ******** New Program - Case 2 *****************
@@ -139,7 +139,7 @@ Contibution */
 gen tuitval2 = grant2+ws2+loan2 
 
 *Check to see this is equal to COA 
-list COAexcel tuitval2 grant2 ws2 loan2 maxefc if COAexcel!=tuitval2
+list COAexcel tuitval2 grant2 ws2 loan2 maxefc if COAexcel!=tuitval2 & !missing(tuitval2)
 
 
 
@@ -221,7 +221,7 @@ Contibution */
 gen tuitval3 = grant3+ws3+loan3 
 
 *Check to see this is equal to COA 
-list COAexcel tuitval3 grant3 ws3 loan3 maxefc if COAexcel!=tuitval3
+list COAexcel tuitval3 grant3 ws3 loan3 maxefc if COAexcel!=tuitval3 & !missing(tuitval3)
 
 
 ******** New Program - Case 4 *****************
@@ -284,7 +284,7 @@ Contibution */
 gen tuitval4 = grant4+ws4+loan4+studentcost4
 
 *Check to see this is equal to COA 
-list COAexcel tuitval4 grant4 ws4 loan4 maxefc studentcost4 if COAexcel!=tuitval4
+list COAexcel tuitval4 grant4 ws4 loan4 maxefc studentcost4 if COAexcel!=tuitval4 & !missing(tuitval4)
 
 
 
@@ -356,7 +356,7 @@ Contibution */
 gen tuitval5 = grant5+ws5+loan5 
 
 *Check to see this is equal to COA 
-list COA tuitval5 grant5 ws5 loan5 maxefc if COA!=tuitval5
+list COA tuitval5 grant5 ws5 loan5 maxefc if COA!=tuitval5 & !missing(tuitval5)
 
 
 ******** New Program - Case 6 *****************
@@ -412,7 +412,7 @@ Contibution */
 gen tuitval6 = grant6+ws6+loan6 
 
 *Check to see this is equal to COA 
-list COA tuitval6 grant6 ws6 loan6 maxefc if COA!=tuitval6
+list COA tuitval6 grant6 ws6 loan6 maxefc if COA!=tuitval6 & !missing(tuitval6)
 
 
 
@@ -491,7 +491,7 @@ Contibution */
 gen tuitval7 = grant7+ws7+loan7 
 
 *Check to see this is equal to COA 
-list COAexcel tuitval7 grant7 ws7 loan7 maxefc if COAexcel!=tuitval7
+list COA tuitval7 grant7 ws7 loan7 maxefc if COA!=tuitval7 & !missing(tuitval7)
 
 
 ******** New Program - Case 8 *****************
@@ -554,7 +554,7 @@ Contibution */
 gen tuitval8 = grant8+ws8+loan8+studentcost8
 
 *Check to see this is equal to COA 
-list COAexcel tuitval8 grant8 ws8 loan8 maxefc studentcost8 if COAexcel!=tuitval8
+list COA tuitval8 grant8 ws8 loan8 maxefc studentcost8 if COA!=tuitval8 & !missing(tuitval8)
 
 
 
