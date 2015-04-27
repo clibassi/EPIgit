@@ -553,6 +553,15 @@ egen totcost7810 = total(costdif78) if freered10==1 & freered11==1
 egen totcost7811 = total(costdif78) if freered11==1
 
 
+*Calculate Per Student Difference in Work Study 
+gen wsdif78 = ws8-ws7
+sum wsdif78, d
+
+egen totwsdif789 = total(wsdif78) if freered9==1 & freered10==1 & freered11==1
+egen totwsdif7810 = total(wsdif78) if freered10==1 & freered11==1
+egen totwsdif7811 = total(wsdif78) if freered11==1
+
+
 ******** Quality Check 8**************
 
 /*Create a variable that gives value of 
@@ -562,7 +571,7 @@ Contibution */
 gen tuitval8 = grant8+ws8+loan8+studentcost8
 
 *Check to see this is equal to COA 
-count if COA!=tuitval8 & !missing(tuitval8) 
+count if abs(COA-tuitval8)>1 & !missing(tuitval8) 
 list COA tuitval8 grant8 ws8 loan8 needstata maxefc studentcost8 FedProratedEFC ProfileEFC if abs(COA-tuitval8)>1 & !missing(tuitval8) 
 
 
@@ -572,8 +581,7 @@ list COA tuitval8 grant8 ws8 loan8 needstata maxefc studentcost8 FedProratedEFC 
 
 sum totcost* 
 
-
-*****WHHHHHHHYYYYYYYY ARE THEY COMING OUT THE SAME FOR 34 and 78????
+sum totws*
 
 
 ********************************************************************************
