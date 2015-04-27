@@ -191,31 +191,31 @@ gen grant3=.
 
 /*With Zero EFC - cost to university is Cost of Attendence 
 less work study (2500)*/
-replace grant3=COAexcel-ws3 if maxefc==0
+replace grant3=COAexcel-ws3 if maxEFCexcel==0
 
 /*With EFC between 0 and 600,  cost to university is Cost of Attendence 
 less work study (2500) less the maximum EFC value */
-replace grant3=COAexcel-ws3-maxefc if maxefc>0 & maxefc<601
+replace grant3=COAexcel-ws3-maxEFCexcel if maxEFCexcel>0 & maxEFCexcel<601
 
 /*With greater than 600 EFC, cost to university of Gift Aid Max minus 
 max EFC, as long GAM is greater than max EFC */
-replace grant3=GAM-maxefc if maxefc>=601 & GAM>maxefc & !missing(maxefc)
+replace grant3=GAM-maxEFCexcel if maxEFCexcel>=601 & GAM>maxEFCexcel & !missing(maxEFCexcel)
 
 *If GAM is less than max EFC, grant is 0
-replace grant3=0 if maxefc>=601 & GAM<maxefc & !missing(maxefc)
+replace grant3=0 if maxEFCexcel>=601 & GAM<maxEFCexcel & !missing(maxEFCexcel)
 
 **************
 *   Loan 3   *
 **************
 *Loan is zero for the 'promise' group - those with 600 or under EFC
-gen loan3 = 0 if maxefc<601
+gen loan3 = 0 if maxEFCexcel<601
 
 /*Loan is zero if EFC is greater than 600 and COA minus 
 grant, work study and max EFC is less than zero */
-replace loan3 = 0 if (COAexcel-grant3-ws3-maxefc)<0 & maxefc>=601
+replace loan3 = 0 if (COAexcel-grant3-ws3-maxEFCexcelexcel)<0 & maxEFCexcel>=601
 
 *Otherwise, loan is COA minus grants, work study and family contribution
-replace loan3 = COAexcel-grant1-ws1-maxefc if maxefc>=601 & !missing(maxefc)
+replace loan3 = COAexcel-grant1-ws1-maxEFCexcelexcel if maxEFCexcel>=601 & !missing(maxEFCexcel)
 
 
 ******** Quality Check 3**************
@@ -228,7 +228,7 @@ gen tuitval3 = grant3+ws3+loan3+maxEFCexcel
 
 *Check to see this is equal to COA 
 count if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
-list COAexcel tuitval3 grant3 ws3 loan3 needexcel maxefc FedProratedEFC ProfileEFC if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
+list COAexcel tuitval3 grant3 ws3 loan3 needexcel maxefc maxEFCexcel FedProratedEFC ProfileEFC if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
 
 ******** New Program - Case 4 *****************
 
