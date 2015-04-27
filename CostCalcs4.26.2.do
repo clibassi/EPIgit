@@ -3,10 +3,10 @@
 
 cd /afs/umich.edu/group/m/mmcmps/projects/increasing_college_opportunities/um_data/
 use um_merged_srsd_2013, clear
-
+capture log close 
 set more off 
 
-*log using costcalclog4.26.log, replace
+log using costcalclog4.26.2.log, replace
 
 *Create some important variables
 gen COAexcel = 26984
@@ -722,7 +722,7 @@ egen totcost91011 = total(costdif910) if freered11==1
 
 
 *Calculate Per Student Difference in Work Study 
-gen wsdif910 = ws10-ws10
+gen wsdif910 = ws10-ws9
 sum wsdif910, d
 
 egen totwsdif9109 = total(wsdif910) if freered9==1 & freered10==1 & freered11==1
@@ -785,5 +785,5 @@ sum work* if school=="University Of Michigan - Ann Arbor"
 
 */
 
-
+log close 
 
