@@ -554,7 +554,7 @@ Contibution */
 gen tuitval8 = grant8+ws8+loan8+studentcost8
 
 *Check to see this is equal to COA 
-list COA tuitval8 grant8 ws8 loan8 maxefc studentcost8 if COA!=tuitval8 & !missing(tuitval8) & _n<30
+list COA tuitval8 grant8 ws8 loan8 maxefc studentcost8 FedProratedEFC ProfileEFC if COA!=tuitval8 & !missing(tuitval8) & _n<30
 
 
 
@@ -563,6 +563,8 @@ list COA tuitval8 grant8 ws8 loan8 maxefc studentcost8 if COA!=tuitval8 & !missi
 
 sum totcost* 
 
+
+*****WHHHHHHHYYYYYYYY ARE THEY COMING OUT THE SAME FOR 34 and 78????
 
 
 ********************************************************************************
