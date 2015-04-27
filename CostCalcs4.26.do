@@ -215,7 +215,7 @@ grant, work study and max EFC is less than zero */
 replace loan3 = 0 if (COAexcel-grant3-ws3-maxEFCexcel)<0 & maxEFCexcel>=601
 
 *Otherwise, loan is COA minus grants, work study and family contribution
-replace loan3 = COAexcel-grant1-ws1-maxEFCexcelexcel if maxEFCexcel>=601 & !missing(maxEFCexcel)
+replace loan3 = COAexcel-grant1-ws1-maxEFCexcel if maxEFCexcel>=601 & !missing(maxEFCexcel)
 
 
 ******** Quality Check 3**************
