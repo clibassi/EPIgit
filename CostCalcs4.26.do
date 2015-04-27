@@ -540,8 +540,8 @@ replace ws8 = needstata if needstata==0
    and adjusted EFC. 
 */
 gen grant8=.
-replace grant8 = COA-ws4 if FedProratedEFC<=2500
-replace grant8 = COA-studentcost4-ws4 if FedProratedEFC>2500 & !missing(FedProratedEFC)
+replace grant8 = COA-ws8 if FedProratedEFC<=2500
+replace grant8 = COA-studentcost8-ws8 if FedProratedEFC>2500 & !missing(FedProratedEFC)
 
 **************
 *   Loan 8   *
