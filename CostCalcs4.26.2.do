@@ -294,6 +294,10 @@ count if studentcost4>0 & !missing(studentcost4) & freered9==1 & freered10==1 & 
 count if studentcost4>0 & !missing(studentcost4) & freered10==1 & freered11==1
 count if studentcost4>0 & !missing(studentcost4) & freered11==1
 
+sum studentcost4 if freered9==1 & freered10==1 & freered11==1, d
+sum studentcost4 if freered10==1 & freered11==1, d
+sum studentcost4 if freered11==1, d
+
 ******** Quality Check 4**************
 
 /*Create a variable that gives value of 
@@ -578,6 +582,14 @@ egen totwsdif7811 = total(wsdif78) if freered11==1
 count if studentcost8>0 & !missing(studentcost8) & freered9==1 & freered10==1 & freered11==1
 count if studentcost8>0 & !missing(studentcost8) & freered10==1 & freered11==1
 count if studentcost8>0 & !missing(studentcost8) & freered11==1
+
+sum studentcost8 if freered9==1 & freered10==1 & freered11==1, d
+sum studentcost8 if freered10==1 & freered11==1, d
+sum studentcost8 if freered11==1, d
+
+sum studentcost8 if studentcost8>0 & freered9==1 & freered10==1 & freered11==1, d
+sum studentcost8 if studentcost8>0 & freered10==1 & freered11==1, d
+sum studentcost8 if studentcost8>0 & freered11==1, d
 
 ******** Quality Check 8**************
 
