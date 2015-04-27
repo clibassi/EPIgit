@@ -508,7 +508,7 @@ list COA tuitval7 grant7 ws7 loan7 maxefc FedProratedEFC ProfileEFC if COA!=tuit
   minus $2,500. This is the cost to the student out of pocket. 
 */
 gen studentcost8=FedProratedEFC-2500
-replace studentcost8 = FedProratedEFC if FedProratedEFC-studentcost8
+replace studentcost8 = FedProratedEFC if FedProratedEFC=studentcost8
 replace studentcost8=0 if FedProratedEFC<2500
 
 **************
