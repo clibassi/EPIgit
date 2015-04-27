@@ -563,7 +563,7 @@ gen tuitval8 = grant8+ws8+loan8+studentcost8
 
 *Check to see this is equal to COA 
 count if COA!=tuitval8 & !missing(tuitval8) 
-list COA tuitval8 grant8 ws8 loan8 needstata maxefc studentcost8 FedProratedEFC ProfileEFC if COA!=tuitval8 & !missing(tuitval8) 
+list COA tuitval8 grant8 ws8 loan8 needstata maxefc studentcost8 FedProratedEFC ProfileEFC if abs(COA-tuitval8)<1 & !missing(tuitval8) 
 
 
 
