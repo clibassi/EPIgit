@@ -443,8 +443,8 @@ list COA tuitval6 grant6 ws6 loan6 maxefc FedProratedEFC ProfileEFC if COA!=tuit
    if need is greater than 2500, otherwise work study is equal
    to need:
 */
-gen ws7 = 2500 if needexcel>2500 & !missing(needexcel)
-replace ws7 = needexcel if needexcel<2500
+gen ws7 = 2500 if needstata>2500 & !missing(needstata)
+replace ws7 = needstata if needstata<2500
 
 **************
 *  Grants 7  *
@@ -455,11 +455,11 @@ gen grant7=.
 
 /*With Zero EFC - cost to university is Cost of Attendence 
 less work study (2500)*/
-replace grant7=COAexcel-ws7 if maxefc==0
+replace grant7=COA-ws7 if maxefc==0
 
 /*With EFC between 0 and 600,  cost to university is Cost of Attendence 
 less work study (2500) less the maximum EFC value */
-replace grant7=COAexcel-ws7-maxefc if maxefc>0 & maxefc<601
+replace grant7=COA-ws7-maxefc if maxefc>0 & maxefc<601
 
 /*With greater than 600 EFC, cost to university of Gift Aid Max minus 
 max EFC, as long GAM is greater than max EFC */
@@ -476,10 +476,10 @@ gen loan7 = 0 if maxefc<601
 
 /*Loan is zero if EFC is greater than 600 and COA minus 
 grant, work study and max EFC is less than zero */
-replace loan7 = 0 if (COAexcel-grant7-ws7-maxefc)<0 & maxefc>=601
+replace loan7 = 0 if (COA-grant7-ws7-maxefc)<0 & maxefc>=601
 
 *Otherwise, loan is COA minus grants, work study and family contribution
-replace loan7 = COAexcel-grant7-ws7-maxefc if maxefc>=601 & !missing(maxefc)
+replace loan7 = COA-grant7-ws7-maxefc if maxefc>=601 & !missing(maxefc)
 
 
 ******** Quality Check 7**************
@@ -511,11 +511,11 @@ replace studentcost8=0 if FedProratedEFC<2500
    if need is greater than 0, otherwise work study is equal
    to 0:
 */
-gen ws8 = 2500 if needexcel>0 & !missing(needexcel) 
-replace ws8 = needexcel if needexcel==0
+gen ws8 = 2500 if needstata>0 & !missing(needstata) 
+replace ws8 = needstata if needstata==0
 
 **************
-*  Grants 4  *
+*  Grants 8  *
 ************** 
 /**Create grant calculation so that students with high EFCs
    don't get full tuition grants. That is if FAFSA EFC is less 
@@ -524,11 +524,11 @@ replace ws8 = needexcel if needexcel==0
    and adjusted EFC. 
 */
 gen grant8=.
-replace grant8 = COAexcel-ws4 if FedProratedEFC<=2500
-replace grant8 = COAexcel-studentcost4-ws4 if FedProratedEFC>2500 & !missing(FedProratedEFC)
+replace grant8 = COA-ws4 if FedProratedEFC<=2500
+replace grant8 = COA-studentcost4-ws4 if FedProratedEFC>2500 & !missing(FedProratedEFC)
 
 **************
-*   Loan 4   *
+*   Loan 8   *
 **************
 gen loan8 = 0 
 
