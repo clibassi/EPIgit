@@ -212,7 +212,7 @@ gen loan3 = 0 if maxEFCexcel<601
 
 /*Loan is zero if EFC is greater than 600 and COA minus 
 grant, work study and max EFC is less than zero */
-replace loan3 = 0 if (COAexcel-grant3-ws3-maxEFCexcelexcel)<0 & maxEFCexcel>=601
+replace loan3 = 0 if (COAexcel-grant3-ws3-maxEFCexcel)<0 & maxEFCexcel>=601
 
 *Otherwise, loan is COA minus grants, work study and family contribution
 replace loan3 = COAexcel-grant1-ws1-maxEFCexcelexcel if maxEFCexcel>=601 & !missing(maxEFCexcel)
