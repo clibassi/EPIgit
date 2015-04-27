@@ -224,7 +224,7 @@ gen tuitval3 = grant3+ws3+loan3
 
 *Check to see this is equal to COA 
 count if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
-list COAexcel tuitval3 grant3 ws3 loan3 needexcel maxefc studentcost3 FedProratedEFC ProfileEFC if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
+list COAexcel tuitval3 grant3 ws3 loan3 needexcel maxefc FedProratedEFC ProfileEFC if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
 
 ******** New Program - Case 4 *****************
 
