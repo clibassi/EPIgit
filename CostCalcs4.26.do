@@ -20,6 +20,9 @@ gen needexcel=COAexcel-FedProratedEFC
 replace needexcel = 0 if FedProratedEFC>COAexcel  
 gen needstata=COA-FedProratedEFC
 
+gen maxEFCexcel = maxEFC if maxEFC<=COAexcel
+replace maxEFCexcel = COAexcel if maxEFC>COAexcel
+
 ********************************************************************************
 
 
@@ -221,7 +224,7 @@ replace loan3 = COAexcel-grant1-ws1-maxefc if maxefc>=601 & !missing(maxefc)
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval3 = grant3+ws3+loan3+maxEFC
+gen tuitval3 = grant3+ws3+loan3+maxEFCexcel
 
 *Check to see this is equal to COA 
 count if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
