@@ -16,7 +16,8 @@ gen GAM = 21900
 label variable GAM "Gift Aid Max" 
 
 **Generate Need Variables = COA-Federal EFC
-gen needexcel=COAexcel-FedProratedEFC
+gen needexcel=COAexcel-FedProratedEFC 
+replace needexcel = 0 if FedProratedEFC>COAexcel  
 gen needstata=COA-FedProratedEFC
 
 ********************************************************************************
