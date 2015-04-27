@@ -290,6 +290,9 @@ egen totwsdif349 = total(wsdif34) if freered9==1 & freered10==1 & freered11==1
 egen totwsdif3410 = total(wsdif34) if freered10==1 & freered11==1
 egen totwsdif3411 = total(wsdif34) if freered11==1
 
+count if studentcost4>0 & !missing(studentcost4) & freered9==1 & freered10==1 & freered11==1
+count if studentcost4>0 & !missing(studentcost4) & freered10==1 & freered11==1
+count if studentcost4>0 & !missing(studentcost4) & freered11==1
 
 ******** Quality Check 4**************
 
@@ -572,6 +575,9 @@ egen totwsdif789 = total(wsdif78) if freered9==1 & freered10==1 & freered11==1
 egen totwsdif7810 = total(wsdif78) if freered10==1 & freered11==1
 egen totwsdif7811 = total(wsdif78) if freered11==1
 
+count if studentcost8>0 & !missing(studentcost8) & freered9==1 & freered10==1 & freered11==1
+count if studentcost8>0 & !missing(studentcost8) & freered10==1 & freered11==1
+count if studentcost8>0 & !missing(studentcost8) & freered11==1
 
 ******** Quality Check 8**************
 
