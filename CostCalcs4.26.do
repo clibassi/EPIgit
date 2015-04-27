@@ -220,7 +220,7 @@ replace loan3 = COAexcel-grant1-ws1-maxefc if maxefc>=601 & !missing(maxefc)
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval3 = grant3+ws3+loan3 
+gen tuitval3 = grant3+ws3+loan3+maxEFC
 
 *Check to see this is equal to COA 
 count if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
@@ -237,7 +237,7 @@ replace studentcost4 = FedProratedEFC if FedProratedEFC==COAexcel
 replace studentcost4=0 if FedProratedEFC<2500
 
 **************
-*Work Study 8*
+*Work Study 4*
 **************
 
 /**Create work study calculation so that work study is 2500
@@ -248,7 +248,7 @@ gen ws4 = 2500 if needexcel>0 & !missing(needexcel)
 replace ws4 = needexcel if needexcel==0
 
 **************
-*  Grants 8  *
+*  Grants 4  *
 ************** 
 /**Create grant calculation so that students with high EFCs
    don't get full tuition grants. That is if FAFSA EFC is less 
@@ -261,7 +261,7 @@ replace grant4 = COAexcel-ws4 if FedProratedEFC<=2500
 replace grant4 = COAexcel-studentcost4-ws4 if FedProratedEFC>2500 & !missing(FedProratedEFC)
 
 **************
-*   Loan 8   *
+*   Loan 4   *
 **************
 gen loan4 = 0 
 
@@ -502,12 +502,11 @@ replace loan7 = COA-grant7-ws7-maxefc if maxefc>=601 & !missing(maxefc)
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval7 = grant7+ws7+loan7 
+gen tuitval7 = grant7+ws7+loan7+maxEFC
 
 *Check to see this is equal to COA 
-count if COA!=tuitval6 & !missing(tuitval6) 
-list COA tuitval7 grant7 ws7 loan7 maxefc FedProratedEFC ProfileEFC if COA!=tuitval7 & !missing(tuitval7) & _n<30
-
+count if abs(COA-tuitval7)>1 & !missing(tuitval7) 
+list COA tuitval7 grant7 ws7 loan7 needstata maxefc FedProratedEFC ProfileEFC if abs(COA-tuitval7)>1 & !missing(tuitval7) 
 
 ******** New Program - Case 8 *****************
 
