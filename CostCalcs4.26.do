@@ -223,9 +223,8 @@ Contibution */
 gen tuitval3 = grant3+ws3+loan3 
 
 *Check to see this is equal to COA 
-count if COA!=tuitval3 & !missing(tuitval3) 
-list COAexcel tuitval3 grant3 ws3 loan3 maxefc FedProratedEFC ProfileEFC if COAexcel!=tuitval3 & !missing(tuitval3) & _n<30
-
+count if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
+list COAexcel tuitval3 grant3 ws3 loan3 needexcel maxefc studentcost3 FedProratedEFC ProfileEFC if abs(COAexcel-tuitval3)>1 & !missing(tuitval3) 
 
 ******** New Program - Case 4 *****************
 
@@ -233,11 +232,12 @@ list COAexcel tuitval3 grant3 ws3 loan3 maxefc FedProratedEFC ProfileEFC if COAe
 /*Create an Adjusted EFC measure, which makes the EFC equal to
   minus $2,500. This is the cost to the student out of pocket. 
 */
-gen studentcost4 = FedProratedEFC-2500
+gen studentcost4=FedProratedEFC-2500
+replace studentcost4 = FedProratedEFC if FedProratedEFC==COAexcel
 replace studentcost4=0 if FedProratedEFC<2500
 
 **************
-*Work Study 4*
+*Work Study 8*
 **************
 
 /**Create work study calculation so that work study is 2500
@@ -248,7 +248,7 @@ gen ws4 = 2500 if needexcel>0 & !missing(needexcel)
 replace ws4 = needexcel if needexcel==0
 
 **************
-*  Grants 4  *
+*  Grants 8  *
 ************** 
 /**Create grant calculation so that students with high EFCs
    don't get full tuition grants. That is if FAFSA EFC is less 
@@ -261,7 +261,7 @@ replace grant4 = COAexcel-ws4 if FedProratedEFC<=2500
 replace grant4 = COAexcel-studentcost4-ws4 if FedProratedEFC>2500 & !missing(FedProratedEFC)
 
 **************
-*   Loan 4   *
+*   Loan 8   *
 **************
 gen loan4 = 0 
 
@@ -278,6 +278,15 @@ egen totcost3410 = total(costdif34) if freered10==1 & freered11==1
 egen totcost3411 = total(costdif34) if freered11==1
 
 
+*Calculate Per Student Difference in Work Study 
+gen wsdif34 = ws4-ws3
+sum wsdif34, d
+
+egen totwsdif349 = total(wsdif34) if freered9==1 & freered10==1 & freered11==1
+egen totwsdif3410 = total(wsdif34) if freered10==1 & freered11==1
+egen totwsdif3411 = total(wsdif34) if freered11==1
+
+
 ******** Quality Check 4**************
 
 /*Create a variable that gives value of 
@@ -287,9 +296,8 @@ Contibution */
 gen tuitval4 = grant4+ws4+loan4+studentcost4
 
 *Check to see this is equal to COA 
-count if COA!=tuitval4 & !missing(tuitval4) 
-list COAexcel tuitval4 grant4 ws4 loan4 maxefc FedProratedEFC ProfileEFC studentcost4 if COAexcel!=tuitval4 & !missing(tuitval4) & _n<30
-
+count if abs(COAexcel-tuitval4)>1 & !missing(tuitval4) 
+list COAexcel tuitval4 grant4 ws4 loan4 needexcel maxefc studentcost4 FedProratedEFC ProfileEFC if abs(COAexcel-tuitval4)>1 & !missing(tuitval4) 
 
 
 
