@@ -157,7 +157,8 @@ egen totwsdif91011 = total(wsdif910) if freered11==1
 resources available to students to put toward COA. 
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
-gen tuitval10 = grant10+ws10+loan10+2500
+gen tuitval10 = grant10+ws10+loan10
+replace tuitval10 = grant10+ws10+loan10+2500 if ws10==0
 
 *Check to see this is equal to COA 
 count if abs(COA-tuitval10)>1 & !missing(tuitval10) 
