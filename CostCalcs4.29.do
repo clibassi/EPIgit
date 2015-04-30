@@ -763,7 +763,7 @@ sum totws*
 
 
 ********************************************************************************
-*FEBP Cleaning 
+/*FEBP Cleaning 
 cd /afs/umich.edu/group/m/mmcmps/projects/increasing_college_opportunities/um_data/Git/EPIgit
 import delimited higher_ed-data-17.csv, clear
 
