@@ -179,7 +179,7 @@ list COAexcel tuitval2 grant2 ws2 loan2 maxefc FedProratedEFC ProfileEFC if COAe
    if need is greater than 2500, otherwise work study is equal
    to need:
 */
-gen ws3 =  & !missing(needexcel)
+gen ws3 =. & !missing(needexcel)
 replace ws3 = needexcel if needexcel<2500
 
 **************
