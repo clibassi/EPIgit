@@ -167,12 +167,12 @@ resources available to students to put toward COA.
 Equals Grant Aid + FWS + Federal Loans + Family 
 Contibution */
 gen tuitval10 = grant10+ws10+loan10
-replace tuitval10 = grant10+ws10+loan10+2500 if ws10==0
+replace tuitval10 = grant10+ws10+loan10+studentcost10
 
 *Check to see this is equal to COA 
 count if abs(COA-tuitval10)>1 & !missing(tuitval10) 
 list COA tuitval10 grant10 ws10 loan10 needstata maxefc FedProratedEFC ProfileEFC if abs(COA-tuitval10)>1 & !missing(tuitval10) & _n<50
-
+list if studentcost>2500 & !missing(studentcost)
 
 
 
