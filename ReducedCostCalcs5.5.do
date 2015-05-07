@@ -178,6 +178,19 @@ egen totcost9109inwtq = total(costdif910) if freered9==1 & freered10==1 & freere
 egen totcost91010inwtq = total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth<96000 & !missing(ParentInvNetWorth)
 egen totcost91011inwtq = total(costdif910) if freered11==1 & ParentInvNetWorth<96000 & !missing(ParentInvNetWorth)
 
+*Fam Inc in the bottom quartile & No Investments 
+egen totcost9109fibqni = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & faminc<66225 & ParentInvNetWorth==0
+egen totcost91010fibqni= total(costdif910) if freered10==1 & freered11==1 & faminc<66225 & ParentInvNetWorth==0
+egen totcost91011fibqni = total(costdif910) if freered11==1 & faminc<66225 & ParentInvNetWorth==0
+
+*Fam Inc in the bottom quartile & No Investments 
+egen totcost9109fibqinwtq = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & faminc<66225 & ParentInvNetWorth<96000
+egen totcost91010fibqinwtq = total(costdif910) if freered10==1 & freered11==1 & faminc<66225 & ParentInvNetWorth==0 & ParentInvNetWorth<96000
+egen totcost91011fibqinwtq = total(costdif910) if freered11==1 & faminc<66225 & ParentInvNetWorth==0 & ParentInvNetWorth<96000
+
+
+
+/*
 *With Typical Fed EFC (10k) 
 egen totcost9109efc10 = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & FedProratedEFC<10000
 egen totcost91010efc10 = total(costdif910) if freered10==1 & freered11==1 & FedProratedEFC<10000
@@ -197,6 +210,10 @@ egen totcost91011mefc10 = total(costdif910) if freered11==1 & maxEFC<10000
 egen totcost9109mefc20 = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & maxEFC<20000
 egen totcost91010mefc20 = total(costdif910) if freered10==1 & freered11==1 & maxEFC<20000
 egen totcost91011mefc20 = total(costdif910) if freered11==1 & maxEFC<20000
+
+*/
+
+*With Typical Max EFC 
 
 *Calculate Per Student Difference in Work Study 
 gen wsdif910 = ws10-ws9
