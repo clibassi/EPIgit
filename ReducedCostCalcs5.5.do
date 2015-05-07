@@ -175,7 +175,7 @@ egen totcost91011inwany = total(costdif910) if freered11==1 & ParentInvNetWorth>
 
 *Family Investment (in top quartile) 
 egen totcost9109inwtq = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
-egen totcost91010inwtq total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
+*egen totcost91010inwtq total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
 egen totcost91011inwtq = total(costdif910) if freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
 
 
