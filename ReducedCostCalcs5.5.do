@@ -169,14 +169,14 @@ egen totcost91010fibq= total(costdif910) if freered10==1 & freered11==1 & faminc
 egen totcost91011fibq = total(costdif910) if freered11==1 & faminc<66225
 
 *Family Investment (any at all)
-egen totcost9109inwany = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & ParentInvNetWorth>0 & !missing(ParentInvNetWorth)
-egen totcost91010inwany= total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth>0 & !missing(ParentInvNetWorth)
-egen totcost91011inwany = total(costdif910) if freered11==1 & ParentInvNetWorth>0 & !missing(ParentInvNetWorth)
+egen totcost9109inwany = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & ParentInvNetWorth==0 & !missing(ParentInvNetWorth)
+egen totcost91010inwany= total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth==0 & !missing(ParentInvNetWorth)
+egen totcost91011inwany = total(costdif910) if freered11==1 & ParentInvNetWorth==0 & !missing(ParentInvNetWorth)
 
 *Family Investment (in top quartile) 
-egen totcost9109inwtq = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
-egen totcost91010inwtq = total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
-egen totcost91011inwtq = total(costdif910) if freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
+egen totcost9109inwtq = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & ParentInvNetWorth<96000 & !missing(ParentInvNetWorth)
+egen totcost91010inwtq = total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth<96000 & !missing(ParentInvNetWorth)
+egen totcost91011inwtq = total(costdif910) if freered11==1 & ParentInvNetWorth<96000 & !missing(ParentInvNetWorth)
 
 
 *Calculate Per Student Difference in Work Study 
