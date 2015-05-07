@@ -123,7 +123,7 @@ gen grant10=COA-2500
    if need is greater than 0, otherwise work study is equal
    to 0:
 */
-gen ws10 = COAexcel-grant10-FedProratedEFC
+gen ws10 = COA-grant10-FedProratedEFC
 label variable ws10 "Amount of Federal Work Study - New Program" 
 replace ws10 = 0 if ws10<0
 
@@ -131,6 +131,12 @@ replace ws10 = 0 if ws10<0
 *   Loan 10  *
 **************
 gen loan10 = 0 
+
+**************
+*Student Cost*
+**************
+
+gen studentcost10 = COA-(grant10+ws10+loan10)
 
 **************
 * Cost Calcs *
