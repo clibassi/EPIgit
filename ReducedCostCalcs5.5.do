@@ -109,9 +109,9 @@ if abs(COA-tuitval9)>1 & !missing(tuitval9)
    if need is greater than 0, otherwise work study is equal
    to 0:
 */
-gen ws2 = COAexcel-grant2-FedProratedEFC
-label variable ws2 "Amount of Federal Work Study - New Program" 
-replace ws2 = 0 if ws2<0
+gen ws10 = COAexcel-grant10-FedProratedEFC
+label variable ws10 "Amount of Federal Work Study - New Program" 
+replace ws10 = 0 if ws10<0
 
 **************
 *  Grants 10 *
