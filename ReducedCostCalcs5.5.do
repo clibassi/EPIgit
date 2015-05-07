@@ -101,18 +101,6 @@ if abs(COA-tuitval9)>1 & !missing(tuitval9)
 ******** New Program - Case 10 *****************
 
 
-***************
-*Work Study 10*
-***************
-
-/**Create work study calculation so that work study is 2500
-   if need is greater than 0, otherwise work study is equal
-   to 0:
-*/
-gen ws10 = COAexcel-grant10-FedProratedEFC
-label variable ws10 "Amount of Federal Work Study - New Program" 
-replace ws10 = 0 if ws10<0
-
 **************
 *  Grants 10 *
 ************** 
@@ -126,6 +114,18 @@ replace ws10 = 0 if ws10<0
    need. 
 */
 gen grant10=COA-2500
+
+***************
+*Work Study 10*
+***************
+
+/**Create work study calculation so that work study is 2500
+   if need is greater than 0, otherwise work study is equal
+   to 0:
+*/
+gen ws10 = COAexcel-grant10-FedProratedEFC
+label variable ws10 "Amount of Federal Work Study - New Program" 
+replace ws10 = 0 if ws10<0
 
 **************
 *   Loan 10  *
