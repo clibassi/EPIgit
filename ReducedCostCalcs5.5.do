@@ -16,6 +16,9 @@ label variable COAexcel "Cost of Attendance"
 gen GAM = 21900
 label variable GAM "Gift Aid Max" 
 
+*Drop Students with missing MaxEFC
+drop if missing(maxEFC)
+
 **Generate Need Variables = COA-Federal EFC
 gen needexcel=COAexcel-FedProratedEFC 
 replace needexcel = 0 if FedProratedEFC>COAexcel  
@@ -23,6 +26,8 @@ gen needstata=COA-FedProratedEFC
 
 gen maxEFCexcel = maxEFC if maxEFC<=COAexcel
 replace maxEFCexcel = COAexcel if maxEFC>COAexcel
+
+
 
 ********************************************************************************
 
@@ -151,6 +156,29 @@ egen totcost91010 = total(costdif910) if freered10==1 & freered11==1
 egen totcost91011 = total(costdif910) if freered11==1
 
 
+**Sum up per student cost difference to get total cost, by FRPL group + some constraints
+
+*Fam Inc less than 100k
+egen totcost9109fi100 = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & faminc<100000
+egen totcost91010fi100 = total(costdif910) if freered10==1 & freered11==1 & faminc<100000
+egen totcost91011fi100 = total(costdif910) if freered11==1 & faminc<100000
+
+*Fam Inc in the bottom quartile
+egen totcost9109fibq = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & faminc<66225
+egen totcost91010fibq= total(costdif910) if freered10==1 & freered11==1 & faminc<66225
+egen totcost91011fibq = total(costdif910) if freered11==1 & faminc<66225
+
+*Family Investment (any at all)
+egen totcost9109inwany = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & ParentInvNetWorth>0 & !missing(ParentInvNetWorth)
+egen totcost91010inwany= total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth>0 & !missing(ParentInvNetWorth)
+egen totcost91011inwany = total(costdif910) if freered11==1 & ParentInvNetWorth>0 & !missing(ParentInvNetWorth)
+
+*Family Investment (in top quartile) 
+egen totcost9109inwtq = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
+egen totcost91010inwtq total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
+egen totcost91011inwtq = total(costdif910) if freered11==1 & ParentInvNetWorth>96000 & !missing(ParentInvNetWorth)
+
+
 *Calculate Per Student Difference in Work Study 
 gen wsdif910 = ws10-ws9
 sum wsdif910, d
@@ -158,6 +186,7 @@ sum wsdif910, d
 egen totwsdif9109 = total(wsdif910) if freered9==1 & freered10==1 & freered11==1
 egen totwsdif91010 = total(wsdif910) if freered10==1 & freered11==1
 egen totwsdif91011 = total(wsdif910) if freered11==1
+
 
 
 ******** Quality Check 10**************
