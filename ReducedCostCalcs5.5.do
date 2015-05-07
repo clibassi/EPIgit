@@ -178,6 +178,15 @@ egen totcost9109inwtq = total(costdif910) if freered9==1 & freered10==1 & freere
 egen totcost91010inwtq = total(costdif910) if freered10==1 & freered11==1 & ParentInvNetWorth<96000 & !missing(ParentInvNetWorth)
 egen totcost91011inwtq = total(costdif910) if freered11==1 & ParentInvNetWorth<96000 & !missing(ParentInvNetWorth)
 
+*With Typical EFC (10k) 
+egen totcost9109efc10 = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & FedProratedEFC<10000
+egen totcost91010efc10 = total(costdif910) if freered10==1 & freered11==1 & FedProratedEFC<10000
+egen totcost91011efc10 = total(costdif910) if freered11==1 & FedProratedEFC<10000
+
+*With Typical (20k)
+egen totcost9109efc20 = total(costdif910) if freered9==1 & freered10==1 & freered11==1 & FedProratedEFC<20000
+egen totcost91010efc20 = total(costdif910) if freered10==1 & freered11==1 & FedProratedEFC<20000
+egen totcost91011efc20 = total(costdif910) if freered11==1 & FedProratedEFC<20000
 
 *Calculate Per Student Difference in Work Study 
 gen wsdif910 = ws10-ws9
