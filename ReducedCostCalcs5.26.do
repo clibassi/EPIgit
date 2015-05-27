@@ -216,8 +216,8 @@ egen totcost1112fibqinwtq = total(costdif910) if freered11==1 & faminc<66225 & P
 
 *Don't restrict to FRPL sample
 
-summ totcost9109*
-summ totcost1112*
+*summ totcost9109*
+*summ totcost1112*
 
 /*11th 12th grade FRPL*/
 
