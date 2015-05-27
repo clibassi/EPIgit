@@ -193,7 +193,7 @@ gen costdif911perstu = grant11-grant9
 egen totcost910 = total(costdif910) if freered11==1 & freered12==1
 egen totcost911 = total(costdif911) if freered11==1 & freered12==1
 summ totcost911
-sum costdif911perstu
+sum costdif911perstu if freered11==1 & freered12==1 
 
 **Sum up per student cost difference to get total cost, by FRPL group + some constraints
 
