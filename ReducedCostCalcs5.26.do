@@ -187,11 +187,13 @@ gen studentcost11 = COA-(grant11+ws11+loan11)
 *Calculate Per Student Cost Difference
 gen costdif910 = grant10-grant9
 gen costdif911 = 4*(grant11-grant9)
+gen costdif911perstu = grant11-grant9
 
 *Sum up per student cost difference to get total cost, by FRPL group 
 egen totcost910 = total(costdif910) if freered11==1 & freered12==1
 egen totcost911 = total(costdif911) if freered11==1 & freered12==1
 summ totcost911
+sum costdif911perstu
 
 **Sum up per student cost difference to get total cost, by FRPL group + some constraints
 
